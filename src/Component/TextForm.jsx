@@ -1,13 +1,40 @@
-import React from 'react'
+// import { useState } from "react"
+import React, {useState}from 'react'
 
 const TextForm = (props) => {
+
+  const handleUpChange = () => {
+    console.log("convert to upper");
+
+    let newText = text.toUpperCase();
+    setText(newText);
+  }
+
+  const handleOnChange = (event) =>{
+    console.log("on change");
+    setText(event.target.value);
+    // to change the value will be added in text box
+  }
+
+
+  const[text, setText] = useState("Enter text here");
+
+  // setText("newText");
+
   return (
   
   <div className="mb-3">
+   
+
     <h1>{props.title}</h1>
     {/* <label htmlFor="box" className="form-label">Example textarea</label> */}
-    <textarea className="form-control" id="box" rows="10"></textarea>
+    <div>
+    <textarea className="form-control" id="box" rows="10" value={text} onChange={handleOnChange}></textarea>
+    </div>
+    <button className='btn btn-primary mt-3' onClick={handleUpChange}>Convert to Upper case</button>
+    
   </div>
+  
   )
 }
 
